@@ -1,16 +1,18 @@
 
 
-function Users({id, name, lastName, country, state}) {
+function Users({id, nombre, apellidoPaterno, pais, estado, telefono}) {
   return(
-    <tr class="unread" id={id}>
+    <tr onClick={()=>(console.log('hola'))} className="unread" id={id}>
       <td>
-        <h6 class="mb-1">{`${name} ${lastName}`}</h6>
-        <p class="m-0">{`${country} ${state}`}</p>
+        <h6 className="mb-1">{`${nombre} ${apellidoPaterno}`}</h6>
+        <p className="m-0">{`${pais} ${estado}`}</p>
       </td>
       <td>
-        <h6 class="text-muted"><i class="fas fa-circle text-c-green f-10 m-r-15"></i>11 MAY 12:56</h6>
+        <h6 className="mb-1">{telefono}</h6>
       </td>
-      <button>Delete</button>
+      <td>
+      <div id={id} ><img style={{weight: 20, height:30, borderRadius: "5px"}} alt="delete user" onClick={()=>(console.log())} src="../../public/images/trash.png" /></div>
+      </td>
     </tr>
   )
 }
