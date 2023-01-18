@@ -1,4 +1,5 @@
 import React from "react";
+import '../../public/css/index.css'
 
 function Login() {
   return (
