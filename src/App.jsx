@@ -1,12 +1,11 @@
 import './App.css'
-//import Login from './pages/Login'
-import SignUp from './pages/SignUp'
-import UserAdmin from './pages/UsersDash'
+import UsersManagment from './pages/UsersManagment/UsersManagment'
 
 function App() {
   return (
     <div className="App">
-      <UserAdmin />
+      <h1>Manejo de Usuarios</h1>
+      <UsersManagment />
     </div>
   )
 }
