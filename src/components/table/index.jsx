@@ -4,10 +4,13 @@ import useTable from "../../hooks/useTable";
 import UsersRows from "./Users/Users";
 import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
-import Modal from "../modal";
+import { DeleteUserModal, EditUserModal} from "../modal";
 
 function Table({data, rowsPerPage}, key) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [userHandler, setUserHandler] = useState({});
+
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
   return (
@@ -21,6 +24,8 @@ function Table({data, rowsPerPage}, key) {
             <th className={styles.tableHeader} >País</th>
             <th className={styles.tableHeader} >Idiomas</th>
             <th className={styles.tableHeader} >Teléfono</th>
+            <th className={styles.tableHeader} >Hobbies</th>
+            <th className={styles.tableHeader} >Preferencias</th>
             <th className={styles.tableHeader} ></th>
             <th className={styles.tableHeader} ></th>
           </tr>
@@ -28,18 +33,17 @@ function Table({data, rowsPerPage}, key) {
             <UsersRows
               id={user.id}
               key={user.id}
-              first_name={user.first_name}
-              last_name={user.last_name}
-              age={user.age}
-              country={user.country}
-              idiom={user.idiom}
-              phone={user.phone}
-              setIsOpen={setIsOpen}
+              data={user}
+              preferences={user.preferences}
+              setUserHandler={setUserHandler}
+              setIsOpenEdit={setIsOpenEdit}
+              setIsOpenDelete={setIsOpenDelete}
             />
           ) : null}
         </thead>
       </table>
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
+      {isOpenEdit && <EditUserModal user={userHandler} setUserHandler={setUserHandler} setIsOpen={setIsOpenEdit} />}
+      {isOpenDelete && <DeleteUserModal user={userHandler} setIsOpen={setIsOpenDelete} />}
       <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
   </>
   );

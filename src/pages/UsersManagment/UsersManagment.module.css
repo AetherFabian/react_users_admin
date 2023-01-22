@@ -2,10 +2,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 600px;
+  width: 1000px;
 }
 
 .wrapper {
   width: 550px;
+}
+
+.createBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 710px;
+  margin-bottom: 20px;
+  background-color: #185adb;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: #fff;
+  background: #185adb;
+  transition: all 0.25s ease;
 }
