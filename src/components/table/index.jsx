@@ -4,8 +4,10 @@ import useTable from "../../hooks/useTable";
 import UsersRows from "./Users/Users";
 import styles from "./Table.module.css";
 import TableFooter from "./TableFooter";
+import Modal from "../modal";
 
 function Table({data, rowsPerPage}, key) {
+  const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const { slice, range } = useTable(data, page, rowsPerPage);
   return (
@@ -19,6 +21,8 @@ function Table({data, rowsPerPage}, key) {
             <th className={styles.tableHeader} >País</th>
             <th className={styles.tableHeader} >Idiomas</th>
             <th className={styles.tableHeader} >Teléfono</th>
+            <th className={styles.tableHeader} ></th>
+            <th className={styles.tableHeader} ></th>
           </tr>
           {slice ? slice.map((user) => 
             <UsersRows
@@ -30,10 +34,12 @@ function Table({data, rowsPerPage}, key) {
               country={user.country}
               idiom={user.idiom}
               phone={user.phone}
+              setIsOpen={setIsOpen}
             />
           ) : null}
         </thead>
       </table>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
       <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
   </>
   );
