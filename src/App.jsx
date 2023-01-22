@@ -1,12 +1,19 @@
+import React, { useState } from 'react'
+
 import './App.css'
-//import Login from './pages/Login'
-import SignUp from './pages/SignUp'
-import UserAdmin from './pages/Users'
+import UsersManagment from './pages/UsersManagment/UsersManagment'
+import Loader from './components/loader/Loader';
 
 function App() {
+  const [loading, setLoading] = useState(false);
   return (
     <div className="App">
-      <UserAdmin />
+      {loading ? <Loader /> :
+      <>
+        <h1>Manejo de Usuarios</h1>
+        <UsersManagment setLoading={setLoading} />
+      </>
+      }
     </div>
   )
 }
